@@ -243,13 +243,19 @@ section.quote .cite {
 section.list .items {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px 80px;
-  margin-top: 60px;
+  gap: 36px 48px;
+  margin-top: 50px;
+}
+section.list .item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 28px 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 section.list .item .icon {
-  font-size: 40px;
+  font-size: 36px;
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 section.list .item h3 {
   font-size: 22px;
@@ -265,8 +271,9 @@ section.list .item p {
 
 /* ===== table: 表 ===== */
 section.table table {
-  width: 100%;
-  margin-top: 50px;
+  display: table;
+  width: 960px;
+  margin: 50px auto 0;
   font-size: 18px;
   border-collapse: collapse;
 }
@@ -275,15 +282,13 @@ section.table table th {
   font-weight: 500;
   color: var(--ink);
   border-bottom: 2px solid var(--ink);
-  padding: 14px 16px;
+  padding: 14px 24px;
 }
 section.table table td {
   color: var(--muted);
   border-bottom: 1px solid var(--line);
-  padding: 14px 16px;
+  padding: 14px 24px;
 }
-section.table table th:first-child,
-section.table table td:first-child { padding-left: 0; }
 
 /* ===== team: メンバー紹介 ===== */
 section.team .members {
