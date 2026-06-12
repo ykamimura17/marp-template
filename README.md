@@ -1,8 +1,83 @@
 # marp-template
 
-ビジネス向け Marp スライドテンプレート集(検証中)。
+ビジネス向け Marp スライドテンプレート集。
 
-## 再現可能性の検証結果
+## minimal-pro テンプレート(本番用)
+
+`demo/minimal-pro.md` のミニマル白基調デザインを、共有テーマCSS + 12種のスライドタイプに拡充したもの。
+
+- テーマ本体: `themes/minimal-pro.css`(`/* @theme minimal-pro */`、Marp Core の `default` テーマを継承)
+- サンプルデック: `templates/minimal-pro.md`(日本語ビジネス文面・12スライド)
+- フォント: `templates/fonts/`(Inter 可変フォント + Noto Sans JP 可変フォント を同梱、オフラインで日本語表示可)
+- レンダリング結果: `templates/out/`
+
+### 用意したスライドタイプ
+
+| クラス | 用途 |
+|---|---|
+| `cover` | 表紙 |
+| `agenda` | 目次 |
+| `section` | セクション区切り(章番号付き) |
+| `content` | 本文テキスト + 写真 |
+| `duo` | 2カラム(写真+テキスト) |
+| `gallery` | 写真3枚グリッド |
+| `stats` | 統計・指標 |
+| `quote` | 引用(`>` のMarkdown記法を使用) |
+| `list` | アイコン付き特徴リスト(2×2) |
+| `table` | 表(Markdownの表記法を使用) |
+| `team` | メンバー紹介 |
+| `closing` | クロージング |
+
+`cover` / `closing` / `section`(区切り)はページ番号・ヘッダーをCSSで非表示にしている。
+`<!-- _paginate: skip -->` を付けたスライド(cover/closing)はページ番号のカウントからも除外される。
+
+### 使い方
+
+```sh
+# CLIでテーマを指定してPNG出力
+npx marp --theme-set themes --allow-local-files --images png -o templates/out/minimal-pro.png templates/minimal-pro.md
+
+# npm script でも同じことができる
+npm run render
+
+# プレビュー(ブラウザでホットリロード)
+npm run preview
+```
+
+md側は以下のようにフロントマターで `theme: minimal-pro` を指定し、`<!-- _class: ... -->` でスライドタイプを切り替える。
+
+```yaml
+---
+marp: true
+theme: minimal-pro
+size: 16:9
+paginate: true
+header: '会社名 — タイトル'
+---
+```
+
+### VS Code でのプレビュー
+
+[Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode) 拡張を入れた状態で、本リポジトリの `.vscode/settings.json` に以下が設定済み:
+
+```json
+{ "markdown.marp.themes": ["./themes/minimal-pro.css"] }
+```
+
+これにより `templates/minimal-pro.md` をVS Codeで開いてプレビューすれば、`theme: minimal-pro` がそのまま適用される。
+
+### フォントの配置規約(重要)
+
+**テーマCSS内の `url()` で参照するフォントは、変換対象の Markdown ファイルと同じ階層の `fonts/` ディレクトリに置くこと。**
+
+marp-cli は PNG/PDF/PPTX 変換時、一時HTMLに `<base href="(入力mdファイルの絶対パス)">` を注入するため、テーマCSS内の相対パスは**テーマファイル基準ではなく md ファイル基準**で解決される([参考](https://github.com/marp-team/marp/discussions/86))。そのため、このテンプレートを他のディレクトリにコピーして使う場合は、`templates/minimal-pro.md` と `templates/fonts/` を**セットでコピー**すること(ルート共有の `fonts/` には依存しない)。
+
+- `templates/fonts/inter-var.woff2` — Inter(可変フォント)
+- `templates/fonts/NotoSansJP.ttf` — Noto Sans JP(可変フォント、[google/fonts](https://github.com/google/fonts/tree/main/ofl/notosansjp) より取得、SIL Open Font License 1.1。`OFL.txt` を同梱)
+
+`--allow-local-files` 変換時にフォントが見つからない場合、marp-cli が `Not found local file(s)` という警告を出すので、レンダリング時はこの警告が出ていないか確認する。
+
+## 検証用プロトタイプ(demo/)
 
 参考デザイン3種を Marp で再現できるか検証し、`demo/` にプロトタイプを作成済み。
 いずれも再現可能(レンダリング結果は `demo/out/` を参照)。

@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "render": "marp --theme-set themes --allow-local-files --images png -o templates/out/minimal-pro.png templates/minimal-pro.md",
+    "render:demo": "marp --html --allow-local-files --images png -o demo/out/business-blue.png demo/business-blue.md && marp --html --allow-local-files --images png -o demo/out/wabi-sabi.png demo/wabi-sabi.md && marp --html --allow-local-files --images png -o demo/out/minimal-pro.png demo/minimal-pro.md",
+    "preview": "marp --theme-set themes -s ."
   },
   "repository": {
     "type": "git",
