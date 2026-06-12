@@ -16,7 +16,11 @@
 ## 技術メモ
 
 - 複雑なレイアウト(カード、円形アイコン、絶対配置)はインライン HTML + CSS で実現。
-  フロントマターの `html: true`(または CLI の `--html`)が必要。
+  `div` / `span` などは Marp Core v4 のデフォルト許可リストに含まれるためそのまま動くが、
+  環境差異を避けるなら CLI の `--html` や VS Code の `markdown.marp.html` を有効にする。
+- `<header>` / `<footer>` タグは許可リスト外でエスケープされるため、
+  Marp 標準の `header:` ディレクティブ(フロントマター)を使うこと。
+  ディレクティブ内は Markdown が使える(例: `header: '**Business** *template*'`)。
 - フォントは `demo/fonts/` に同梱(woff2、Google Fonts 由来)。オフラインでもレンダリング可能。
   オンライン前提なら `@import url('https://fonts.googleapis.com/...')` でも可。
 - スライドごとのレイアウト切り替えは `<!-- _class: title -->` などのクラス指定で行う。

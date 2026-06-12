@@ -4,6 +4,7 @@ theme: default
 size: 16:9
 paginate: false
 html: true
+header: 'Creative Professional Presentation'
 ---
 
 <style>
@@ -22,6 +23,8 @@ section {
 header {
   position: absolute;
   top: 44px; left: 80px;
+  right: auto;
+  width: auto;
   font-size: 15px;
   color: #999;
   letter-spacing: 0.5px;
@@ -90,7 +93,6 @@ section.stats .ph {
 
 <!-- _class: cover -->
 
-<header>Creative Professional Presentation</header>
 
 # Slide Pro.
 
@@ -104,7 +106,6 @@ Creative Professional Template
 
 <!-- _class: duo -->
 
-<header>Creative Professional Presentation</header>
 
 # Clean Style
 
@@ -123,7 +124,6 @@ Creative Professional Template
 
 <!-- _class: stats -->
 
-<header>Creative Professional Presentation</header>
 
 # Our Goals
 

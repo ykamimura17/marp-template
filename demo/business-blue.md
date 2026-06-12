@@ -4,6 +4,7 @@ theme: default
 size: 16:9
 paginate: false
 html: true
+header: '**Business** *template*'
 ---
 
 <style>
@@ -37,15 +38,17 @@ section::before {
 header {
   position: absolute;
   top: 34px; right: 70px;
+  left: auto;
+  width: auto;
   font-size: 26px;
-  font-weight: 900;
-  color: var(--navy);
-}
-header em {
-  font-style: normal;
   font-weight: 400;
   color: #aaa;
 }
+header strong {
+  font-weight: 900;
+  color: var(--navy);
+}
+header em { font-style: normal; }
 
 /* ===== タイトルスライド ===== */
 section.title .left-box {
@@ -139,7 +142,7 @@ section.divider {
   background: linear-gradient(rgba(106, 174, 211, 0.75), rgba(106, 174, 211, 0.75)),
               linear-gradient(160deg, #8fa6b8 0%, #5f7a90 40%, #3c5a72 100%);
 }
-section.divider header em { color: rgba(255,255,255,0.5); }
+section.divider header em { color: rgba(255,255,255,0.5); font-style: normal; }
 section.divider .boxes {
   position: absolute;
   left: 60px; top: 130px;
@@ -177,7 +180,6 @@ section.divider .band {
 
 <!-- _class: title -->
 
-<header><b>Business</b> <em>template</em></header>
 
 <div class="left-box">Presentation<br>Design</div>
 <div class="circles">
@@ -202,7 +204,6 @@ section.divider .band {
 
 <!-- _class: cards -->
 
-<header><b>Business</b> <em>template</em></header>
 
 <div class="card-row">
   <div class="card">
@@ -226,7 +227,6 @@ section.divider .band {
 
 <!-- _class: divider -->
 
-<header><b>Business</b> <em>template</em></header>
 
 <div class="boxes">
   <div>The wonderful Ultimate Professional Business Power point Template</div>
